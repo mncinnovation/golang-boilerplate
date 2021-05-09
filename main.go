@@ -1,6 +1,8 @@
 package main
 
 import (
+	"errors"
+	"fmt"
 	"golang-boilerplate/controllers"
 	"golang-boilerplate/libs"
 	"net/http"
@@ -23,4 +25,13 @@ func main() {
 	e.DELETE("/framework/:name", controllers.DeleteFramework)
 
 	e.Logger.Fatal(e.Start(":1323"))
+}
+
+func Greeting(name string) error {
+	if name == "" {
+		return errors.New("Insert your name")
+	}
+
+	fmt.Println("Hello " + name)
+	return nil
 }
